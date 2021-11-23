@@ -1,4 +1,6 @@
+import Card from './components/Card/Card';
 import ExpenseItem from './components/ExpenseItem/ExpenseItem';
+import './Expenses.css';
 
 function App() {
   const expenses = [
@@ -23,9 +25,9 @@ function App() {
     },
   ];
   return (
-    <div>
-      <ExpenseItem expanse={expenses}/>
-    </div>
+    <Card className="expenses">
+      <ExpenseItem expense={expenses}/>
+    </Card>
   );
 }
 
