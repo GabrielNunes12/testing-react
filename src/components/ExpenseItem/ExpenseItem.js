@@ -1,7 +1,11 @@
 import './ExpenseItem.css';
 import ExpenseDate from '../ExpenseDate/ExpenseDate';
 import Card from '../Card/Card';
-export default function ExpenseItem({expense}) {
+
+export const ExpenseItem = ({expense}) => {
+  
+  const clickHandler = () => {}
+
   return (
     <>
       {expense.map(value => (
@@ -11,8 +15,11 @@ export default function ExpenseItem({expense}) {
             <h2>{value.title}</h2>
             <h2 className="expense-item__price">{value.amount}</h2>
           </div>
+          <button onClick={clickHandler}>Change title</button>
         </Card>
       ))}
     </>
   );
 }
+
+export default ExpenseItem;
