@@ -10,10 +10,10 @@ export const ExpenseItem = ({expense}) => {
   function clickHandler() {
     setTitle('Book');
   }
-
+  console.log('expensesItem', expense);
   return (
     <>
-      {expense.map(value => (
+      {expense && expense.map(value => (
         <Card className="expense-item" key={value.id}>
           <ExpenseDate date={value.date}/>
           <div className="expense-item__description">
