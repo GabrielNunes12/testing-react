@@ -2,23 +2,32 @@ import Card from './components/Card/Card';
 import ExpenseItem from './components/ExpenseItem/ExpenseItem';
 import NewExpense from './components/NewExpense/NewExpense';
 import './Expenses.css';
+import ExpenseFilter from './components/ExpenseFilter/ExpenseFilter';
+import {useState} from 'react';
 
+const DUMMY_EXPENSES = [];
 function App() {
-  const expenses = [];
+  const [filteredYear, setFilteredYear] = useState('2020');
+
+  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
 
   const onSaveExpense = (expense) => {
-    const newExpense = {
-      id: expense.id,
-      title: expense.title,
-      amount: expense.amount,
-      date: new Date(expense.date),
-    }
-    expenses.push(newExpense);
+    setExpenses((prevExpense) => {
+      return [expense, ...prevExpense]
+    });
   }
+
+  const onGetYear = (year) => {
+    setFilteredYear(year);
+  }
+
   return (
     <>
       <NewExpense onSaveExpense={onSaveExpense}/>
       <Card className="expenses">
+        <div>
+          <ExpenseFilter selected={filteredYear} onGetYear={onGetYear} />
+        </div>
         <ExpenseItem expense={expenses}/>
       </Card>
     </>
